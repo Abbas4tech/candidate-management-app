@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface SearchInputProps {
   value: string;
@@ -41,7 +41,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
       </div>
       <input
         type="text"
-        className="w-full h-[32px] pl-10 pr-3 text-[13.7px] border border-[#cccccc] rounded-[2px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-[#909090] placeholder:text-[#909090] font-light"
+        className="w-full h-8 pl-10 pr-3 text-[13.7px] border border-[#cccccc] rounded-[2px] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-[#909090] placeholder:text-[#909090] font-light"
         placeholder={placeholder}
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
