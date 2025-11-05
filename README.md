@@ -1,192 +1,371 @@
-# Frontend Take-Home Assessment
+# Candidate Management Application
 
-Welcome! This assessment is designed to evaluate your skills in React, TypeScript, TailwindCSS, and FastAPI.
+A full-stack candidate management interface built with React, TypeScript, TailwindCSS, shadcn/ui, and FastAPI. This application allows users to search, filter, and navigate through a list of job candidates with a modern, responsive UI.
 
-## Time Expectation
+## 🎯 Features
 
-**1 hour and 30 minutes**. We understand this is limited time, so focus on:
-1. Core functionality working correctly
-2. Clean component structure
-3. Visual accuracy to the design
+- 🔍 **Smart Search** - Search candidates by name, position, or company with debounced input
+- 📄 **Multi-Filter Sidebar** - 8 collapsible filter sections for refined searches
+- 📑 **Pagination** - Navigate through candidates (5 per page, 4 pages total)
+- 🎨 **Modern UI** - Beautiful interface built with shadcn/ui components
+- ⚡ **Fast API** - Responsive FastAPI backend with real-time filtering
+- 📊 **Interview Tracking** - View candidate interview stages and availability
+- 🎯 **Status Badges** - Visual status indicators for candidate application stages
 
-## Overview
+## 🛠️ Tech Stack
 
-You'll be building a candidate management interface inspired by Greenhouse's "All Candidates" page. This assessment focuses on:
-- Translating designs into well-organized React components
-- Implementing interactive filtering and pagination
-- Creating FastAPI endpoints with query parameters
-- Styling with TailwindCSS to match the provided design
+**Frontend:**
 
-## What You'll Build
+- React 18 with TypeScript
+- Vite (build tool - fast development)
+- TailwindCSS (utility-first styling)
+- shadcn/ui (high-quality React components)
+- Lucide React (icon library)
 
-A candidate listing page with:
-- **Left Sidebar**: Search input, filters (dropdown + collapsible sections), reset button
-- **Main Content**: Candidate list with name, position, job, status, and interview stages
-- **Pagination**: Navigate through 4 pages of candidates
-- **Backend**: FastAPI endpoint that handles search filtering
+**Backend:**
 
-## What's Provided
+- FastAPI (modern Python web framework)
+- Python 3.9+
+- Uvicorn (ASGI server)
+- Pydantic (data validation)
 
-### Pre-Built for You
-- ✅ **Sidebar component** with search input, toggle, dropdown, reset button
-- ✅ **SearchInput component** with 300ms debounce
-- 🔶 **CollapsibleSection skeleton** (needs state management)
-- ✅ **Configured React + TypeScript + TailwindCSS project**
-- ✅ **Configured FastAPI starter** with CORS and data loading
-- ✅ **Mock data JSON** with 20 candidates
-- ✅ **Design specifications** (colors, spacing, typography)
-- ✅ **TypeScript type definitions** for all data structures
+## 📋 Prerequisites
 
-### What You Build
-- Complete the CollapsibleSection component (add state + expand/collapse logic)
-- 8 filter sections using CollapsibleSection in the sidebar (visual only)
-- Action buttons (Generate Report, Add Candidate, Bulk Actions - visual only)
-- Candidate card components matching the design exactly
-- Pagination component with working navigation (client-side)
-- FastAPI endpoint with search filtering
+- **Node.js** 18+ and npm
+- **Python** 3.9+
+- **Git**
 
-## Getting Started
+## 🚀 Quick Start
 
-### 1. Frontend Setup
+### 1. Clone the Repository
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-The app will run on `http://localhost:5173`
+\`\`\`bash
+git clone https://github.com/YOUR_USERNAME/candidate-management-app.git
+cd candidate-management-app
+\`\`\`
 
 ### 2. Backend Setup
 
-```bash
+\`\`\`bash
 cd backend
+
+# Create virtual environment
+
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Activate (Windows PowerShell)
+
+.\\venv\\Scripts\\Activate.ps1
+
+# Activate (macOS/Linux)
+
+source venv/bin/activate
+
+# Install dependencies
+
 pip install -r requirements.txt
-uvicorn main:app --reload
-```
 
-The API will run on `http://localhost:8000`
+# Start server
 
-## Requirements
+python main.py
+\`\`\`
 
-See [REQUIREMENTS.md](./REQUIREMENTS.md) for detailed step-by-step requirements.
+Backend runs on: [**http://localhost:8000**](http://localhost:8000)
+API Documentation: [**http://localhost:8000/docs**](http://localhost:8000/docs)
 
-### Core Requirements (Must Complete)
+### 3. Frontend Setup
 
-1. **Filter Sections in Sidebar**
-   - Complete the `CollapsibleSection.tsx` component (add state, toggle, conditional rendering)
-   - Add 8 CollapsibleSection components to the Sidebar's filter area
-   - Sections: Application Type, Jobs, CRM, Profile Details, Source, Responsibility, Pipeline Tasks, Education
-   - Chevron should rotate 90deg (point right when collapsed, down when expanded)
-   - **Note**: Filters are visual only for core requirements
+Open a new terminal:
 
-2. **Candidate List** - **Main Focus**
-   - Build CandidateCard component matching the design exactly
-   - Display: name (link), position, company, job title, status
-   - Include interview stages section for candidates with interviews
-   - Match spacing, colors, and typography from Figma precisely
-   - Display 5 candidates per page
+\`\`\`bash
+cd frontend
 
-3. **Action Buttons**
-   - "Generate Report", "+ Add Candidate", "Bulk Actions" buttons
-   - Visual only, no functionality needed
+# Install dependencies
 
-4. **Pagination**
-   - Build Pagination component showing pages 1, 2, 3, 4
-   - Highlight current page
-   - Navigate between pages (MUST WORK - updates candidate list)
-   - Use client-side pagination (slice array in frontend)
+npm install
 
-5. **FastAPI Backend**
-   - `GET /api/candidates` endpoint
-   - Support `search` query parameter
-   - Implement search filtering (name, position, company)
-   - Return all matching candidates (pagination handled client-side)
+# Add shadcn/ui components
 
-### Stretch Goals (If Time Permits)
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add badge
+npx shadcn-ui@latest add dropdown-menu
+npx shadcn-ui@latest add collapsible
+npx shadcn-ui@latest add pagination
 
-- Working dropdown sort functionality
-- Loading states when fetching data
-- Working filter sections (expand/collapse + filtering)
-- Filter tags that show active filters
-- Hover animations and transitions
-- Mobile responsive layout
+# Start development server
 
-## Design Files
+npm run dev
+\`\`\`
 
-- **Reference Design (Figma)**: [View Figma File](https://www.figma.com/design/gZL1X2fSo0MzExOIXNW1hz/Sample-Pages?node-id=1-1390&t=00CymjmcEhM0QfRK-11)
-  - This is the exact design you should replicate
-  - Focus on the "All Candidates Page" section
-- **Design Specs**: See `designs/specs.md` for colors, spacing, typography
-- **Screenshots**: See `designs/` folder for exported screenshots
+Frontend runs on: [**http://localhost:5173**](http://localhost:5173)
 
-## Evaluation Criteria
+Open browser to: [**http://localhost:5173**](http://localhost:5173)
 
-Your submission will be evaluated on:
+## 📂 Project Structure
 
-### 1. Visual Accuracy (25 points)
-- CandidateCard matches design spacing, colors, and typography (15 pts)
-- Filter sections styled correctly with expand/collapse functionality (7 pts)
-- Pagination matches design (3 pts)
-- Proper use of TailwindCSS utilities
-- Note: We evaluate designs visually. Your implementation should closely approximate the Figma reference - exact pixel perfection is not required
-- Bonus: All 8 filter sections implemented (+2 pts)
+\`\`\`
+candidate-management-app/
+├── backend/
+│ ├── main.py # FastAPI application
+│ ├── candidates.json # Candidate data
+│ ├── requirements.txt # Python dependencies
+│ └── .gitignore
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── ui/ # shadcn/ui components (generated)
+│ │ │ ├── CandidateCard.tsx # Main candidate display
+│ │ │ ├── CandidatePagination.tsx # Navigation
+│ │ │ ├── Sidebar.tsx # Search & filters
+│ │ │ └── CollapsibleSection.tsx # Expandable sections
+│ │ ├── App.tsx # Main app component
+│ │ ├── types.ts # TypeScript interfaces
+│ │ └── main.tsx
+│ ├── package.json
+│ ├── vite.config.ts
+│ ├── tailwind.config.js
+│ ├── tsconfig.json
+│ ├── postcss.config.js
+│ └── .gitignore
+│
+├── .gitignore
+└── README.md
+\`\`\`
 
-### 2. Component Structure (25 points)
-- Well-organized, modular components
-- Logical component hierarchy for CandidateCard
-- Reusable components where appropriate
-- Clean file structure
+## 🔌 API Endpoints
 
-### 3. Functionality (35 points)
-- Search filtering works correctly (debounced)
-- Pagination works (correct page changes, correct candidates shown)
-- Backend endpoint implements search and pagination correctly
-- Candidates display with all required information
-- Interview stages display for applicable candidates
+### Health Check
 
-### 4. TypeScript Usage (15 points)
-- Proper type definitions for all props
-- **No use of `any` type** (explicit or implicit)
-- Correct typing for API responses
-- Good use of interfaces/types
+\`\`\`
+GET /health
+\`\`\`
 
-### Bonus Points
-- Clean, readable code
-- Helpful comments where needed
-- Good error handling
-- Accessibility considerations
+Response:
+\`\`\`json
+{
+"status": "healthy",
+"total_candidates": 20
+}
+\`\`\`
 
-## Submission
+### Get Candidates
 
-When complete:
+\`\`\`
+GET /api/candidates?search=&page=1&limit=5
+\`\`\`
 
-1. **Test your code**
-   - Ensure both frontend and backend run without errors
-   - Test all filter and pagination functionality
+Query Parameters:
 
-2. **Document any incomplete features** in `NOTES.md`
-   - What you completed
-   - What you would do with more time
-   - Any libraries you added and why
+- \`search\` (optional) - Search by name, position, or company
+- \`status\` (optional) - Filter by status
+- \`page\` (default: 1) - Page number
+- \`limit\` (default: 5) - Items per page
 
-3. **Zip the project**
-   - Delete `node_modules/` and `venv/` before zipping
-   - Keep `.git` folder if you used git
+Response:
+\`\`\`json
+{
+"candidates": [
+{
+"id": 1,
+"name": "Jana Patton",
+"position": "Jr. Product Manager",
+"company": "Software Alliance Corp.",
+"job_title": "Digital Marketing Specialist (O26)",
+"status": "Application Review",
+"has_interviews": true,
+"interviews": [
+{
+"name": "Initial Screen",
+"scheduled": true
+}
+],
+...
+}
+],
+"total": 20,
+"page": 1,
+"limit": 5,
+"total_pages": 4
+}
+\`\`\`
 
-4. **Email it back to us**
+### Get Single Candidate
 
-## Notes
+\`\`\`
+GET /api/candidates/{candidate_id}
+\`\`\`
 
-- You may use any additional packages if needed (just explain why in NOTES.md)
-- Focus on the provided stack (React, TypeScript, TailwindCSS, FastAPI)
-- We're not expecting perfection - show us your problem-solving approach
-- If you use AI tools, that's fine! Just note which tools and how you used them
+## 🧪 Testing
 
-## Questions?
+### Manual Testing Workflow
 
-If you have questions during the assessment, please reach out to [your-email@company.com].
+1. **Start Backend** (Terminal 1)
+   \`\`\`bash
+   cd backend
+   python main.py
+   \`\`\`
 
-Good luck! We're excited to see what you build.
+2. **Start Frontend** (Terminal 2)
+   \`\`\`bash
+   cd frontend
+   npm run dev
+   \`\`\`
+
+3. **Test Endpoints** (Terminal 3 - Optional)
+   \`\`\`bash
+
+   # Check health
+
+   curl http://localhost:8000/health
+
+   # Search candidates
+
+   curl "http://localhost:8000/api/candidates?search=Jana"
+
+   # Test pagination
+
+   curl "http://localhost:8000/api/candidates?page=2"
+   \`\`\`
+
+4. **Test UI Features**
+   - Open http://localhost:5173
+   - Type in search box
+   - Click filter sections to expand/collapse
+   - Navigate using pagination buttons
+   - View candidate details and interviews
+
+### Verification Checklist
+
+- [ ] Both servers run without errors
+- [ ] API endpoints respond correctly
+- [ ] Search filters candidates
+- [ ] Pagination navigates through pages
+- [ ] Candidate cards display correctly
+- [ ] Interview sections show when present
+- [ ] No console errors in browser
+- [ ] No terminal errors
+
+## 🚀 Building for Production
+
+### Build Frontend
+
+\`\`\`bash
+cd frontend
+npm run build
+
+# Creates optimized dist/ folder
+
+\`\`\`
+
+### Deployment Options
+
+**Frontend (Vercel - Recommended):**
+
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Set root directory to \`frontend/\`
+4. Deploy automatically
+
+**Backend (Railway/Render):**
+
+1. Connect GitHub repository
+2. Select \`backend/\` folder
+3. Set runtime to Python 3.9+
+4. Add environment: PORT=8000
+5. Run command: \`uvicorn main:app --host 0.0.0.0 --port $PORT\`
+
+## 📝 Component Documentation
+
+### CandidateCard
+
+Displays a single candidate with:
+
+- Name, position, company
+- Job title and status badge
+- Action link
+- Interview stages
+- Availability status
+
+### CandidatePagination
+
+Navigation component with:
+
+- Previous/Next buttons
+- Page number buttons
+- Disabled states
+- Current page highlight
+
+### Sidebar
+
+Left sidebar filter panel with:
+
+- Search input with debounce
+- 8 collapsible filter sections
+- Reset button
+
+### CollapsibleSection
+
+Reusable component with:
+
+- Chevron icon rotation animation
+- State management
+- Smooth transitions
+
+## 🐛 Troubleshooting
+
+**Backend won't start:**
+\`\`\`bash
+pip install -r requirements.txt
+python main.py
+\`\`\`
+
+**Frontend won't start:**
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+**API connection error:**
+
+- Ensure backend runs on port 8000
+- Check CORS in backend main.py
+- Restart both servers
+
+**Port already in use:**
+\`\`\`bash
+
+# Windows
+
+netstat -ano | findstr :8000
+taskkill /PID <PID> /F
+
+# macOS/Linux
+
+lsof -i :8000
+kill -9 <PID>
+\`\`\`
+
+## 📚 Resources
+
+- [Figma Design](https://www.figma.com/design/gZL1X2fSo0MzExOIXNW1hz/Sample-Pages?node-id=1-1390&t=00CymjmcEhM0QfRK-11)
+- [React Documentation](https://react.dev)
+- [FastAPI Documentation](https://fastapi.tiangolo.com)
+- [TailwindCSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
+- [Vite](https://vitejs.dev)
+
+## 📄 License
+
+MIT License - Feel free to use this project for learning and development.
+
+## 👨‍💻 Author
+
+Built as a take-home assessment project showcasing full-stack web development skills.
+
+---
+
+**Ready to get started?** Follow the Quick Start guide above!
+\`\`\`
